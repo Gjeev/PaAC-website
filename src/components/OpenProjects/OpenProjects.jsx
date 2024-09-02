@@ -1,11 +1,11 @@
 import "./OpenProjects.css";
-import Topbar from "../Topbar/Topbar";
 import Footer from "../Footer/Footer";
 import ProjectCard from "./Card";
 const spaceId = import.meta.env.VITE_SPACE_ID;
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 import { useState, useEffect } from "react";
 import Faq from "./Faq";
+
 export default function Events() {
   const [projects, setProjects] = useState(null);
 
@@ -43,14 +43,24 @@ export default function Events() {
       });
   }, []);
 
+   useEffect(() => {
+     window.scrollTo({
+       top: 0,
+       left: 0,
+       behavior: "smooth",
+     });
+   });
+
   if (!projects) {
     return "Loading...";
   }
+
+
   return (
     <div className="projects-container">
-      <div className="projects-topbar">
+      {/* <div className="projects-topbar">
         <Topbar />
-      </div>
+      </div> */}
       <section className="open-projects">
         <h1>Open Projects</h1>
         <section className="faq">

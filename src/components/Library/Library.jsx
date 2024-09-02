@@ -1,4 +1,3 @@
-import Topbar from "../Topbar/Topbar";
 import "./Library.css";
 import Footer from "../Footer/Footer";
 import { useState, useEffect } from "react";
@@ -9,6 +8,9 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
+
+
+
 const spaceId = import.meta.env.VITE_SPACE_ID;
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 
@@ -50,10 +52,18 @@ const Library = () => {
       });
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+
   if (!page) {
     return "Loading...";
   }
-  
+
   const filteredBooks = page.filter((book) => {
     if (subject === "All") {
       return true;
@@ -65,19 +75,21 @@ const Library = () => {
   return (
     <>
       <div className="library-container">
-        <div className="library-topbar">
+        {/* <div className="library-topbar">
           <Topbar />
-        </div>
+        </div> */}
         <section className="library">
           <div className="library-top">
             <h1>Our Library</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Asperiores provident nisi, nemo corrupti, ab commodi sint maxime
-              natus rem ut praesentium soluta alias cupiditate neque consectetur
-              ex quibusdam, in vero. Quisquam, laudantium! Vero consequatur
-              aspernatur molestias maiores quam tempora sunt, veniam magni!
-              Numquam laudantium ea provident similique eius minus quidem.
+              Welcome to our Library, <b>The Einstein Library</b> which has few
+              but significant books. There are books on Astronomy, Mathematics
+              and Physics. It also has a collection of cosmic photographs,
+              including both that we have collected and taken ourselves. You are
+              welcome to visit the PaAC room and get access to the club library.
+              You can also donate books and help us promote the sciences.
+              <br />
+              <b>Note: </b>We don&apos;t lend books but you can read whatever you want to in the club room.
             </p>
           </div>
           <div className="library-bottom">

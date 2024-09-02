@@ -1,9 +1,9 @@
-import React, { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import "./Gallery.css";
-import Topbar from "../Topbar/Topbar";
 import { data } from "./Images.js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useEffect } from "react";
 
 export default function Gallery() {
   const comp = useRef();
@@ -32,11 +32,21 @@ export default function Gallery() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    })
+  })
+
+
+
   return (
     <div className="gallery-container" ref={comp}>
-      <div className="gallery-topbar">
+      {/* <div className="gallery-topbar">
         <Topbar />
-      </div>
+      </div> */}
       <div className="gallery-body" style={{ width: `${data.length * 100}%` }}>
         {data.map((image) => {
           return (

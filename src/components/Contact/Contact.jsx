@@ -1,15 +1,26 @@
-import { useRef } from "react";
+import { useEffect} from "react";
 import "./Contact.css";
-import Topbar from "../Topbar/Topbar";
 import Footer from "../Footer/Footer";
 
 export default function Contact() {
-  const form = useRef();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    })
+  })
+
+  useEffect(()=> {
+    Tally.loadEmbeds();
+  }, [])
+
   return (
     <div className="contact-container">
-      <div className="contact-topbar">
+      {/* <div className="contact-topbar">
         <Topbar />
-      </div>
+      </div> */}
       <div className="contact-us-container">
         <div className="contact-desc">
           <div className="contact-us">
@@ -37,7 +48,7 @@ export default function Contact() {
           </div>
           <div className="social-media"></div>
         </div>
-        <form
+        {/* <form
           ref={form}
           method="POST"
           className="contact-form"
@@ -59,7 +70,10 @@ export default function Contact() {
               Send
             </button>
           </div>
-        </form>
+        </form> */}
+      <div className="contact-form">
+        <iframe data-tally-src="https://tally.so/embed/n91GOK?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="507" frameBorder="0" marginHeight="0" marginWidth="0" title="Query form"></iframe>
+      </div>
       </div>
       <div className="contact-footer">
         <Footer />
